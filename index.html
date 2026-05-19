@@ -107,6 +107,17 @@ body {
    height: 55vh;
  }
 }
+
+.map-frame {
+ width: 100%;
+ height: 300px;
+ border: 0;
+ border-radius: 10px;
+}
+.map-btn {
+ margin-top: 10px;
+}
+
 </style>
 </head>
 <body>
@@ -120,7 +131,7 @@ body {
 
 <div class="ms-auto nav-actions">
 <button class="btn btn-outline-primary me-2 nav-btn" onclick="showPage('home')">Home</button>
-<button class="btn btn-outline-primary me-2 nav-btn" onclick="showPage('accommodation')">Accommodation</button>
+<button class="btn btn-outline-primary me-2 nav-btn" onclick="showProtectedPage('accommodation')">Accommodation</button>
 <button class="btn btn-outline-primary me-2 nav-btn" onclick="showPage('feedback')">Reviews</button>
 <button class="btn btn-primary nav-btn" onclick="showPage('login')">Login / Register</button>
 </div>
@@ -135,7 +146,7 @@ body {
 <div class="hero-content">
 <h1 class="display-4 fw-bold">Find Your Perfect Student Home</h1>
 <p class="lead">Safe and affordable accommodation across Botswana 🇧🇼</p>
-<button class="btn btn-primary btn-lg" onclick="showPage('accommodation')">
+<button class="btn btn-primary btn-lg" onclick="showProtectedPage('accommodation')">
 Browse Houses
 </button>
 </div>
@@ -195,7 +206,7 @@ Finder Fee<br><strong>P100</strong>
 
 <!-- DETAILS -->
 <div id="details" style="display:none">
-<button class="btn btn-secondary mb-3" onclick="showPage('accommodation')">Back</button>
+<button class="btn btn-secondary mb-3" onclick="showProtectedPage('accommodation')">Back</button>
 <div id="detailsContent"></div>
 </div>
 
@@ -225,7 +236,7 @@ Submit Application
 </div>
 
 <!-- LOGIN PAGE -->
-<div id="login" style="display:none">
+<div id="login">
 <div class="container py-5">
 <h2 class="mb-2 text-center fw-bold">Login / Register</h2>
 <p class="text-center text-muted mb-2">
@@ -233,7 +244,7 @@ Choose your account type and upload verification documents.
 </p>
 
 <div class="alert alert-warning text-center shadow-sm">
-<strong>Access Restricted:</strong> Users must create an account and complete payment verification before viewing accommodation listings.
+<strong>Access Restricted:</strong> You must register and complete payment before viewing houses.
 </div>
 
 <div class="row g-4">
@@ -325,14 +336,13 @@ Pay & Create Customer Account
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-showPage("login");
 const houses = [
- {title:"Apartment",price:"P2500",location:"Gaborone",img:"https://images.unsplash.com/photo-1560185007-cde436f6a4d0",bedrooms:2,bathrooms:1,wifi:true,parking:true,security:"24/7 Security",extras:"Furnished"},
- {title:"Hostel",price:"P1500",location:"Francistown",img:"https://images.unsplash.com/photo-1555854877-bab0e564b8d5",bedrooms:1,bathrooms:1,wifi:true,parking:false,security:"Controlled Access",extras:"Shared Kitchen"},
- {title:"Studio",price:"P2000",location:"Gaborone",img:"https://images.unsplash.com/photo-1493809842364-78817add7ffb",bedrooms:1,bathrooms:1,wifi:true,parking:true,security:"Electric Fence",extras:"Modern"},
- {title:"House",price:"P1800",location:"Tlokweng",img:"https://images.unsplash.com/photo-1570129477492-45c003edd2be",bedrooms:3,bathrooms:2,wifi:true,parking:true,security:"Gate & Alarm",extras:"Big Yard"},
- {title:"Room",price:"P1500",location:"Old Naledi",img:"https://images.unsplash.com/photo-1505691938895-1758d7feb511",bedrooms:1,bathrooms:1,wifi:false,parking:false,security:"Basic Lock",extras:"Budget"},
- {title:"Flat",price:"P2200",location:"Extension 12",img:"https://images.unsplash.com/photo-1484154218962-a197022b5858",bedrooms:2,bathrooms:1,wifi:true,parking:true,security:"24/7 Security",extras:"Near Shops"}
+ {title:"Apartment",price:"P2500",location:"Gaborone",map:"https://www.google.com/maps?q=Gaborone,+Botswana&output=embed",mapLink:"https://www.google.com/maps?q=Gaborone,+Botswana",img:"https://images.unsplash.com/photo-1560185007-cde436f6a4d0",bedrooms:2,bathrooms:1,wifi:true,parking:true,security:"24/7 Security",extras:"Furnished"},
+ {title:"Hostel",price:"P1500",location:"Francistown",map:"https://www.google.com/maps?q=Francistown,+Botswana&output=embed",mapLink:"https://www.google.com/maps?q=Francistown,+Botswana",img:"https://images.unsplash.com/photo-1555854877-bab0e564b8d5",bedrooms:1,bathrooms:1,wifi:true,parking:false,security:"Controlled Access",extras:"Shared Kitchen"},
+ {title:"Studio",price:"P2000",location:"Gaborone",map:"https://www.google.com/maps?q=Gaborone,+Botswana&output=embed",mapLink:"https://www.google.com/maps?q=Gaborone,+Botswana",img:"https://images.unsplash.com/photo-1493809842364-78817add7ffb",bedrooms:1,bathrooms:1,wifi:true,parking:true,security:"Electric Fence",extras:"Modern"},
+ {title:"House",price:"P1800",location:"Tlokweng",map:"https://www.google.com/maps?q=Tlokweng,+Botswana&output=embed",mapLink:"https://www.google.com/maps?q=Tlokweng,+Botswana",img:"https://images.unsplash.com/photo-1570129477492-45c003edd2be",bedrooms:3,bathrooms:2,wifi:true,parking:true,security:"Gate & Alarm",extras:"Big Yard"},
+ {title:"Room",price:"P1500",location:"Old Naledi",map:"https://www.google.com/maps?q=Old+Naledi,+Gaborone,+Botswana&output=embed",mapLink:"https://www.google.com/maps?q=Old+Naledi,+Gaborone,+Botswana",img:"https://images.unsplash.com/photo-1505691938895-1758d7feb511",bedrooms:1,bathrooms:1,wifi:false,parking:false,security:"Basic Lock",extras:"Budget"},
+ {title:"Flat",price:"P2200",location:"Extension 12",map:"https://www.google.com/maps?q=Extension+12,+Gaborone,+Botswana&output=embed",mapLink:"https://www.google.com/maps?q=Extension+12,+Gaborone,+Botswana",img:"https://images.unsplash.com/photo-1484154218962-a197022b5858",bedrooms:2,bathrooms:1,wifi:true,parking:true,security:"24/7 Security",extras:"Near Shops"}
 ];
 
 const container = document.getElementById("houses");
@@ -344,6 +354,9 @@ houses.forEach((h,i)=>{
 <div class="card-body">
 <h5>${h.title}</h5>
 <p>${h.location}</p>
+<a href="${h.mapLink}" target="_blank" class="btn btn-outline-secondary btn-sm w-100 mb-2">
+View Map Location
+</a>
 <p class="fw-bold text-primary">${h.price}</p>
 <button class="btn btn-primary w-100" onclick="viewDetails(${i})">
 View Details
@@ -354,26 +367,30 @@ View Details
  `;
 });
 
-
 window.hasPaidAccess = false;
 
 window.unlockAccess = function(userType){
- alert(userType + " account verified successfully! Access to houses unlocked.");
  window.hasPaidAccess = true;
+ alert(userType + " payment received. You can now view the houses.");
  showPage('accommodation');
 }
 
-window.showPage = function(page){
- if((page === 'accommodation' || page === 'details' || page === 'apply') && !window.hasPaidAccess){
-   alert("Please register and complete payment verification before viewing houses.");
-   page = 'login';
+window.showProtectedPage = function(page){
+ if(!window.hasPaidAccess){
+   alert("Please register and pay first before viewing houses.");
+   showPage('login');
+   return;
  }
+ showPage(page);
+}
 
+window.showPage = function(page){
  ["home","accommodation","details","apply","feedback","login"].forEach(p=>{
-   document.getElementById(p).style.display="none";
+   const el = document.getElementById(p);
+   if(el){ el.style.display="none"; }
  });
-
- document.getElementById(page).style.display="block";
+ const target = document.getElementById(page);
+ if(target){ target.style.display="block"; }
  window.scrollTo(0,0);
 }
 
@@ -385,6 +402,9 @@ window.viewDetails = function(i){
 <div class="p-3">
 <h3>${h.title}</h3>
 <p>${h.location}</p>
+<a href="${h.mapLink}" target="_blank" class="btn btn-outline-secondary btn-sm w-100 mb-2">
+View Map Location
+</a>
 <p class="fw-bold text-primary">${h.price}</p>
 <ul class="list-group mb-3">
 <li class="list-group-item">Bedrooms: ${h.bedrooms}</li>
@@ -394,7 +414,15 @@ window.viewDetails = function(i){
 <li class="list-group-item">Security: ${h.security}</li>
 <li class="list-group-item">Extras: ${h.extras}</li>
 </ul>
-<button class="btn btn-success w-100" onclick="showPage('apply')">
+
+<h5 class="mt-4">Map Location</h5>
+<iframe class="map-frame mb-3" src="${h.map}" allowfullscreen="" loading="lazy"></iframe>
+
+<a href="${h.mapLink}" target="_blank" class="btn btn-outline-primary w-100 mb-3">
+Open Location in Google Maps
+</a>
+
+<button class="btn btn-success w-100" onclick="showProtectedPage('apply')">
 Apply Now
 </button>
 </div>
@@ -402,7 +430,9 @@ Apply Now
  `;
  showPage("details");
 }
+showPage('login');
 });
 </script>
 </body>
+</html>
 </html>

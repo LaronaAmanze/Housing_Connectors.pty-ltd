@@ -3,51 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Housing Connectors</title>
+<title>Housing Connectors PTY. LTD.</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
 
 body{
-    background-color:#f8f9fa;
+    background:#f8f9fa;
     font-family:Arial, Helvetica, sans-serif;
 }
 
 /* NAVBAR */
-
 .navbar{
     background:white;
 }
 
 .logo-img{
     height:90px;
-    width:auto;
-    object-fit:contain;
 }
 
-.nav-btn{
-    font-weight:600;
-}
-
-/* HERO SECTION */
-
+/* HERO */
 .hero{
-    background:url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2') center/cover no-repeat;
+    background:url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2')
+    center/cover no-repeat;
+
     height:70vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
     position:relative;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
     color:white;
-    border-radius:15px;
-    overflow:hidden;
 }
 
-.hero::after{
-    content:"";
+.hero::before{
+    content:'';
     position:absolute;
     width:100%;
     height:100%;
@@ -59,26 +52,13 @@ body{
     z-index:2;
 }
 
-.section{
-    padding:60px 0;
+/* CARDS */
+.card:hover{
+    transform:scale(1.03);
+    transition:0.3s;
 }
 
-.section-alt{
-    background:white;
-    border-radius:15px;
-}
-
-.section-title{
-    font-weight:bold;
-}
-
-.section-eyebrow{
-    color:#6c757d;
-    font-size:14px;
-}
-
-/* PANELS */
-
+/* ROLE SECTION */
 .role-split{
     display:flex;
     gap:20px;
@@ -87,109 +67,105 @@ body{
 
 .role-panel{
     flex:1;
-    min-width:280px;
-    padding:25px;
+    padding:30px;
     border-radius:15px;
     color:white;
 }
 
-.sky-panel{
-    background:linear-gradient(135deg,#0d6efd,#6ea8fe);
+.landlord-panel{
+    background:linear-gradient(135deg,#0d6efd,#5fa7ff);
 }
 
-.green-panel{
-    background:linear-gradient(135deg,#198754,#75d69c);
+.customer-panel{
+    background:linear-gradient(135deg,#198754,#56d98a);
 }
 
-.role-emo{
-    font-size:40px;
-    margin-bottom:10px;
+.fee-box{
+    background:rgba(255,255,255,0.2);
+    padding:10px;
+    border-radius:10px;
+    margin:15px 0;
 }
 
-.role-list{
-    padding-left:20px;
+.btn-full{
+    width:100%;
 }
-
-/* CARDS */
-
-.card{
-    transition:0.3s;
-}
-
-.card:hover{
-    transform:scale(1.03);
-}
-
-/* MAP */
 
 .map-frame{
     width:100%;
     height:300px;
-    border:0;
+    border:none;
     border-radius:10px;
 }
 
-/* MOBILE */
+/* FOOTER */
+footer{
+    background:#001b44;
+}
+
+footer a{
+    text-decoration:none;
+}
 
 @media(max-width:768px){
 
-    .logo-img{
-        height:65px;
-    }
+.logo-img{
+    height:65px;
+}
 
-    .nav-actions{
-        margin-top:15px;
-    }
+.hero{
+    height:55vh;
+}
 
-    .hero{
-        height:55vh;
-    }
 }
 
 </style>
+
 </head>
 
 <body>
 
 <!-- NAVBAR -->
-
 <nav class="navbar navbar-expand-lg shadow-sm py-3">
+
 <div class="container">
 
-<!-- NEW LOGO -->
+<!-- LOGO -->
 <a class="navbar-brand d-flex align-items-center" href="#">
-<img src="image (1).png" alt="Housing Connectors Logo" class="logo-img">
+<img src="housing-connectors-logo.png"
+alt="Housing Connectors Logo"
+class="logo-img">
 </a>
 
-<!-- NAVIGATION -->
-<div class="ms-auto nav-actions">
+<div class="ms-auto">
 
-<button class="btn btn-outline-primary me-2 nav-btn">
-Home
+<button class="btn btn-outline-primary me-2"
+onclick="showPage('login')">
+Login
 </button>
 
-<button class="btn btn-outline-primary me-2 nav-btn">
+<button class="btn btn-outline-primary me-2"
+onclick="showProtectedPage('accommodation')">
 Accommodation
 </button>
 
-<button class="btn btn-outline-primary me-2 nav-btn">
+<button class="btn btn-outline-primary me-2"
+onclick="showPage('feedback')">
 Reviews
 </button>
 
-<button class="btn btn-primary nav-btn">
-Login / Register
-</button>
-
 </div>
 
 </div>
+
 </nav>
 
 <div class="container mt-4">
 
-<!-- HERO -->
+<!-- HOME -->
+<div id="home" style="display:none">
 
-<div class="hero">
+<div class="hero rounded">
 
 <div class="hero-content">
 
@@ -201,238 +177,618 @@ Find Your Perfect Student Home
 Safe and affordable accommodation across Botswana 🇧🇼
 </p>
 
-<button class="btn btn-primary btn-lg">
+<button class="btn btn-primary btn-lg"
+onclick="showProtectedPage('accommodation')">
+
 Browse Houses
+
 </button>
 
 </div>
 
 </div>
 
-<!-- LANDLORD & TENANT -->
-
-<section class="section section-alt mt-5 shadow-sm">
-
-<div class="text-center mb-5">
-
-<span class="section-eyebrow">
-🤝 For Everyone
-</span>
-
-<h2 class="section-title">
-Built for Landlords & Tenants
-</h2>
-
-<p class="text-muted">
-Create the correct account type and verify your identity before using full features.
-</p>
-
 </div>
 
-<div class="role-split">
+<!-- LOGIN PAGE -->
+<div id="login">
+
+<div class="container py-5">
+
+<h2 class="text-center fw-bold mb-2">
+Welcome to Housing Connectors
+</h2>
+
+<p class="text-center text-muted">
+Create an account and pay before viewing houses.
+</p>
+
+<div class="alert alert-warning text-center shadow-sm">
+<strong>Access Restricted:</strong>
+You must register and complete payment verification before accessing listings.
+</div>
+
+<div class="row g-4 mt-3">
 
 <!-- LANDLORD -->
+<div class="col-md-6">
 
-<div class="role-panel sky-panel">
+<div class="card shadow border-0 p-4 h-100">
 
-<div class="role-emo">
-🏠
+<h3 class="text-primary mb-3">
+🏢 Landlord Account
+</h3>
+
+<input type="text"
+class="form-control mb-3"
+placeholder="Full Name">
+
+<input type="email"
+class="form-control mb-3"
+placeholder="Email Address">
+
+<input type="password"
+class="form-control mb-3"
+placeholder="Password">
+
+<label class="fw-bold">
+Front Picture of Omang/Passport
+</label>
+
+<input type="file" class="form-control mb-3">
+
+<label class="fw-bold">
+Back Picture of Omang/Passport
+</label>
+
+<input type="file" class="form-control mb-3">
+
+<label class="fw-bold">
+Proof of Employment / Ownership
+</label>
+
+<input type="file" class="form-control mb-3">
+
+<div class="alert alert-primary">
+Listing Fee: <strong>P200</strong>
 </div>
 
-<h3>Landlords</h3>
+<button class="btn btn-primary w-100"
+onclick="unlockAccess('Landlord')">
 
-<ul class="role-list">
-<li>Upload properties</li>
-<li>Manage tenants</li>
-<li>Receive bookings</li>
-<li>Verify ownership</li>
-</ul>
+Pay P200 & Create Landlord Account
 
-</div>
-
-<!-- TENANT -->
-
-<div class="role-panel green-panel">
-
-<div class="role-emo">
-🎓
-</div>
-
-<h3>Students / Tenants</h3>
-
-<ul class="role-list">
-<li>Browse houses</li>
-<li>Apply online</li>
-<li>Verify identity</li>
-<li>Secure accommodation</li>
-</ul>
+</button>
 
 </div>
 
 </div>
 
-</section>
+<!-- CUSTOMER -->
+<div class="col-md-6">
 
-<!-- HOUSES -->
+<div class="card shadow border-0 p-4 h-100">
 
-<section class="section">
+<h3 class="text-success mb-3">
+👤 Customer/Tenant Account
+</h3>
 
-<div class="text-center mb-5">
+<input type="text"
+class="form-control mb-3"
+placeholder="Full Name">
 
-<h2 class="fw-bold">
-Available Accommodation
+<input type="email"
+class="form-control mb-3"
+placeholder="Email Address">
+
+<input type="password"
+class="form-control mb-3"
+placeholder="Password">
+
+<label class="fw-bold">
+Front Picture of Omang/Passport
+</label>
+
+<input type="file" class="form-control mb-3">
+
+<label class="fw-bold">
+Back Picture of Omang/Passport
+</label>
+
+<input type="file" class="form-control mb-3">
+
+<label class="fw-bold">
+Proof of Employment / Student Status
+</label>
+
+<input type="file" class="form-control mb-3">
+
+<div class="alert alert-success">
+Finder Fee: <strong>P100</strong>
+</div>
+
+<button class="btn btn-success w-100"
+onclick="unlockAccess('Customer')">
+
+Pay P100 & Create Customer Account
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ACCOMMODATION -->
+<div id="accommodation" style="display:none">
+
+<h2 class="mb-4">
+Available Houses
 </h2>
 
-<p class="text-muted">
-Affordable student housing around Botswana
-</p>
+<div class="row" id="houses"></div>
 
 </div>
 
-<div class="row g-4">
+<!-- DETAILS -->
+<div id="details" style="display:none">
 
-<!-- HOUSE 1 -->
+<button class="btn btn-secondary mb-3"
+onclick="showProtectedPage('accommodation')">
 
-<div class="col-md-4">
+Back
 
-<div class="card shadow-sm h-100">
-
-<img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994"
-class="card-img-top"
-style="height:250px; object-fit:cover;">
-
-<div class="card-body">
-
-<h5 class="card-title">
-Tlokweng Student House
-</h5>
-
-<p class="card-text">
-2 bedrooms • WiFi • Secure yard • Water included
-</p>
-
-<h6 class="text-primary">
-P2,300/month
-</h6>
-
-<button class="btn btn-primary w-100">
-View Details
 </button>
 
-</div>
+<div id="detailsContent"></div>
 
 </div>
 
-</div>
+<!-- APPLY -->
+<div id="apply" style="display:none">
 
-<!-- HOUSE 2 -->
-
-<div class="col-md-4">
-
-<div class="card shadow-sm h-100">
-
-<img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be"
-class="card-img-top"
-style="height:250px; object-fit:cover;">
-
-<div class="card-body">
-
-<h5 class="card-title">
-Old Naledi Apartment
-</h5>
-
-<p class="card-text">
-1 bedroom • Furnished • Electricity included
-</p>
-
-<h6 class="text-primary">
-P1,800/month
-</h6>
-
-<button class="btn btn-primary w-100">
-View Details
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- HOUSE 3 -->
-
-<div class="col-md-4">
-
-<div class="card shadow-sm h-100">
-
-<img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d"
-class="card-img-top"
-style="height:250px; object-fit:cover;">
-
-<div class="card-body">
-
-<h5 class="card-title">
-Extension 12 Rooms
-</h5>
-
-<p class="card-text">
-Shared accommodation • WiFi • Near bus route
-</p>
-
-<h6 class="text-primary">
-P1,500/month
-</h6>
-
-<button class="btn btn-primary w-100">
-View Details
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- MAP -->
-
-<section class="section section-alt shadow-sm">
-
-<div class="text-center mb-4">
-
-<h2 class="fw-bold">
-Our Locations
+<h2 class="mb-3">
+Application Form
 </h2>
 
+<div class="card p-4 shadow">
+
+<input class="form-control mb-3"
+placeholder="Full Name">
+
+<input class="form-control mb-3"
+placeholder="Email">
+
+<input class="form-control mb-3"
+placeholder="Phone">
+
+<textarea class="form-control mb-3"
+placeholder="Notes"></textarea>
+
+<button class="btn btn-success w-100"
+onclick="alert('Application Submitted!')">
+
+Submit Application
+
+</button>
+
 </div>
 
-<iframe
-class="map-frame"
-src="https://maps.google.com/maps?q=gaborone&t=&z=13&ie=UTF8&iwloc=&output=embed">
-</iframe>
+</div>
 
-</section>
+<!-- FEEDBACK -->
+<div id="feedback" style="display:none">
+
+<h2 class="mb-4">
+Student Reviews
+</h2>
+
+<div class="row">
+
+<div class="col-md-4 mb-3">
+<div class="card p-3 shadow">
+⭐⭐⭐⭐⭐ Kabelo<br>
+Great place!
+</div>
+</div>
+
+<div class="col-md-4 mb-3">
+<div class="card p-3 shadow">
+⭐⭐⭐⭐ Thato<br>
+Loved the WiFi
+</div>
+</div>
+
+<div class="col-md-4 mb-3">
+<div class="card p-3 shadow">
+⭐⭐⭐⭐⭐ Neo<br>
+Very safe
+</div>
+</div>
+
+</div>
+
+</div>
 
 </div>
 
 <!-- FOOTER -->
+<footer class="text-white pt-5 pb-3 mt-5">
 
-<footer class="bg-dark text-white text-center py-4 mt-5">
+<div class="container">
 
-<h5>Housing Connectors PTY LTD</h5>
+<div class="row">
+
+<!-- COMPANY -->
+<div class="col-md-4 mb-4">
+
+<img src="housing-connectors-logo.png"
+alt="Housing Connectors Logo"
+style="height:90px; width:auto;"
+class="mb-3">
 
 <p>
-Find • Connect • Belong
+Find · Connect · Belong
 </p>
 
-<p class="mb-0">
-© 2026 Housing Connectors. All rights reserved.
+</div>
+
+<!-- LINKS -->
+<div class="col-md-4 mb-4">
+
+<h5 class="fw-bold">
+Company
+</h5>
+
+<ul class="list-unstyled">
+
+<li>
+<a href="#" class="text-white">
+About Us
+</a>
+</li>
+
+<li>
+<a href="#" class="text-white">
+Accommodation
+</a>
+</li>
+
+<li>
+<a href="#" class="text-white">
+Reviews
+</a>
+</li>
+
+<li>
+<a href="#" class="text-white">
+Contact
+</a>
+</li>
+
+</ul>
+
+</div>
+
+<!-- CONTACT -->
+<div class="col-md-4 mb-4">
+
+<h5 class="fw-bold">
+Contact Us
+</h5>
+
+<p>
+Email: info@housingconnectors.co.bw
 </p>
+
+<p>
+Phone: +267 71 234 567
+</p>
+
+<p>
+Location: Gaborone, Botswana
+</p>
+
+</div>
+
+</div>
+
+<hr class="border-light">
+
+<div class="text-center">
+© 2026 Housing Connectors PTY. LTD. All rights reserved.
+</div>
+
+</div>
 
 </footer>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function(){
+
+showPage('login');
+
+const houses = [
+
+{
+title:"Apartment",
+price:"P2500",
+location:"Gaborone",
+map:"https://www.google.com/maps?q=Gaborone,+Botswana&output=embed",
+mapLink:"https://www.google.com/maps?q=Gaborone,+Botswana",
+img:"https://images.unsplash.com/photo-1560185007-cde436f6a4d0",
+bedrooms:2,
+bathrooms:1,
+wifi:true,
+parking:true,
+security:"24/7 Security",
+extras:"Furnished"
+},
+
+{
+title:"Hostel",
+price:"P1500",
+location:"Francistown",
+map:"https://www.google.com/maps?q=Francistown,+Botswana&output=embed",
+mapLink:"https://www.google.com/maps?q=Francistown,+Botswana",
+img:"https://images.unsplash.com/photo-1555854877-bab0e564b8d5",
+bedrooms:1,
+bathrooms:1,
+wifi:true,
+parking:false,
+security:"Controlled Access",
+extras:"Shared Kitchen"
+},
+
+{
+title:"House",
+price:"P1800",
+location:"Tlokweng",
+map:"https://www.google.com/maps?q=Tlokweng,+Botswana&output=embed",
+mapLink:"https://www.google.com/maps?q=Tlokweng,+Botswana",
+img:"https://images.unsplash.com/photo-1570129477492-45c003edd2be",
+bedrooms:3,
+bathrooms:2,
+wifi:true,
+parking:true,
+security:"Gate & Alarm",
+extras:"Big Yard"
+}
+
+];
+
+const container = document.getElementById("houses");
+
+houses.forEach((h,i)=>{
+
+container.innerHTML += `
+
+<div class="col-md-4 mb-4">
+
+<div class="card shadow-sm">
+
+<img src="${h.img}"
+class="card-img-top"
+style="height:200px; object-fit:cover;">
+
+<div class="card-body">
+
+<h5>${h.title}</h5>
+
+<p>${h.location}</p>
+
+<a href="${h.mapLink}"
+target="_blank"
+class="btn btn-outline-secondary btn-sm w-100 mb-2">
+
+View Map Location
+
+</a>
+
+<p class="fw-bold text-primary">
+${h.price}
+</p>
+
+<button class="btn btn-primary w-100"
+onclick="viewDetails(${i})">
+
+View Details
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+});
+
+window.hasPaidAccess = false;
+
+function unlockAccess(userType){
+
+window.hasPaidAccess = true;
+
+alert(userType + " payment successful! Access unlocked.");
+
+showPage('accommodation');
+
+}
+
+function showProtectedPage(page){
+
+if(!window.hasPaidAccess){
+
+alert("Please register and pay first before viewing houses.");
+
+showPage('login');
+
+return;
+
+}
+
+showPage(page);
+
+}
+
+function showPage(page){
+
+["home","login","accommodation","details","apply","feedback"]
+.forEach(p=>{
+
+document.getElementById(p).style.display = "none";
+
+});
+
+document.getElementById(page).style.display = "block";
+
+window.scrollTo(0,0);
+
+}
+
+function viewDetails(i){
+
+const houses = [
+
+{
+title:"Apartment",
+price:"P2500",
+location:"Gaborone",
+map:"https://www.google.com/maps?q=Gaborone,+Botswana&output=embed",
+mapLink:"https://www.google.com/maps?q=Gaborone,+Botswana",
+img:"https://images.unsplash.com/photo-1560185007-cde436f6a4d0",
+bedrooms:2,
+bathrooms:1,
+wifi:true,
+parking:true,
+security:"24/7 Security",
+extras:"Furnished"
+},
+
+{
+title:"Hostel",
+price:"P1500",
+location:"Francistown",
+map:"https://www.google.com/maps?q=Francistown,+Botswana&output=embed",
+mapLink:"https://www.google.com/maps?q=Francistown,+Botswana",
+img:"https://images.unsplash.com/photo-1555854877-bab0e564b8d5",
+bedrooms:1,
+bathrooms:1,
+wifi:true,
+parking:false,
+security:"Controlled Access",
+extras:"Shared Kitchen"
+},
+
+{
+title:"House",
+price:"P1800",
+location:"Tlokweng",
+map:"https://www.google.com/maps?q=Tlokweng,+Botswana&output=embed",
+mapLink:"https://www.google.com/maps?q=Tlokweng,+Botswana",
+img:"https://images.unsplash.com/photo-1570129477492-45c003edd2be",
+bedrooms:3,
+bathrooms:2,
+wifi:true,
+parking:true,
+security:"Gate & Alarm",
+extras:"Big Yard"
+}
+
+];
+
+const h = houses[i];
+
+document.getElementById("detailsContent").innerHTML = `
+
+<div class="card shadow">
+
+<img src="${h.img}"
+style="height:300px; object-fit:cover;">
+
+<div class="p-3">
+
+<h3>${h.title}</h3>
+
+<p>${h.location}</p>
+
+<p class="fw-bold text-primary">
+${h.price}
+</p>
+
+<ul class="list-group mb-3">
+
+<li class="list-group-item">
+Bedrooms: ${h.bedrooms}
+</li>
+
+<li class="list-group-item">
+Bathrooms: ${h.bathrooms}
+</li>
+
+<li class="list-group-item">
+WiFi: ${h.wifi ? "Yes" : "No"}
+</li>
+
+<li class="list-group-item">
+Parking: ${h.parking ? "Yes" : "No"}
+</li>
+
+<li class="list-group-item">
+Security: ${h.security}
+</li>
+
+<li class="list-group-item">
+Extras: ${h.extras}
+</li>
+
+</ul>
+
+<h5 class="mt-4">
+Map Location
+</h5>
+
+<iframe class="map-frame mb-3"
+src="${h.map}">
+</iframe>
+
+<a href="${h.mapLink}"
+target="_blank"
+class="btn btn-outline-primary w-100 mb-3">
+
+Open Location in Google Maps
+
+</a>
+
+<button class="btn btn-success w-100"
+onclick="showProtectedPage('apply')">
+
+Apply Now
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+showPage('details');
+
+}
+
+</script>
 
 </body>
 </html>
